@@ -20,12 +20,16 @@ namespace helloazure.Controllers {
         [HttpGet]
         [Route("")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<IQueryable<Person>> GetPersons()
+        public ActionResult<IQueryable<Person>> GetPersons([FromQuery] PersonsRequest request)
         {
             var result = _context.Persons as IQueryable<Person>;
+            
+            Response.Headers["x-total-count"] = result.Count().ToString();
 
             return Ok(result
-              .OrderBy(p => p.Id));
+                    .OrderBy(p => p.Id)
+                    .Skip(request.Offset)
+                    .Take(request.Limit));
         }
 
     }
