@@ -17,8 +17,9 @@ namespace helloazure.Controllers {
             }
         }
 
-        [HttpGet]
-        [Route("")]
+
+        [HttpGet("api/get-persons")]
+        [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<IQueryable<Person>> GetPersons([FromQuery] PersonsRequest request)
         {
