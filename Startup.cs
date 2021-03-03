@@ -50,7 +50,10 @@ namespace helloazure
             });
 
             app.UseSwagger();
-            app.UseSwaggerUI(opt => opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Persons v1"));
+            app.UseSwaggerUI(opt => {
+                opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Persons v1");
+                opt.RoutePrefix = string.Empty;
+            });
         }
     }
 }
