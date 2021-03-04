@@ -13,10 +13,10 @@ namespace helloazure.Controllers {
         {
             _context = context;
             _logger = logger;
-            if (!_context.Persons.Any())
-            {
-                PersonGenerator.InitData(_context);
-            }
+            // if (!_context.Persons.Any())
+            // {
+            //     PersonGenerator.InitData(_context);
+            // }
         }
 
 
